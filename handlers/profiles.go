@@ -34,9 +34,9 @@ func (h *handlerProfile) FindProfiles(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(err.Error())
 	}
 
-	for i, p := range profiles {
-		profiles[i].Image = path_file + p.Image
-	}
+	// for i, p := range profiles {
+	// 	profiles[i].Image = path_file + p.Image
+	// }
 
 	w.WriteHeader(http.StatusOK)
 	response := dto.SuccessResult{Status: "Success", Data: profiles}
@@ -56,7 +56,7 @@ func (h *handlerProfile) GetProfile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	profile.Image = path_file + profile.Image
+	// profile.Image = path_file + profile.Image
 
 	w.WriteHeader(http.StatusOK)
 	response := dto.SuccessResult{Status: "Success", Data: convertResponseProfile(profile)}
