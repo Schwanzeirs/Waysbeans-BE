@@ -251,6 +251,9 @@ func (h *handlerTransaction) Notification(w http.ResponseWriter, r *http.Request
 	} else if transactionStatus == "pending" {
 		// TODO set transaction status on your databaase to 'pending' / waiting payment
 		h.TransactionRepository.UpdateTransactions("pending", orderId)
+	} else if transactionStatus == "success" {
+		SendMail("success", transaction)
+		h.TransactionRepository.UpdateTransactions("success", orderId)
 	}
 
 	w.WriteHeader(http.StatusOK)
